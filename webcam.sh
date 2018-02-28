@@ -6,4 +6,4 @@
 
 #fswebcam -r 640x480 --no-banner /home/pi/PiHome/webcam/pic.jpg
 
-fswebcam -S 60 /home/pi/webcam/webcam/pic.jpg
+fswebcam -S 60 /home/pi/flowers/webcam/pic.jpg
