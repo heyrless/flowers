@@ -27,14 +27,14 @@ def handle(msg):
             
         bot.sendMessage(chat_id, 'Generating plot of the last {} hours.'.format(bhours))
         
-        subprocess.run(["python3","/home/pi/PiHome/make_th_plot.py",str(bhours)])
+        subprocess.run(["python3","/home/pi/flowers/make_th_plot.py",str(bhours)])
         #get_plot(bhours)
         
         print("Plot generated...")
         #bot.sendMessage(chat_id, 'Temp={0:0.1f}*'.format(temperature))
-        f = open('/home/pi/PiHome/temperature.png', 'rb')  # some file on local disk
+        f = open('/home/pi/flowers/temperature.png', 'rb')  # some file on local disk
         response = bot.sendPhoto(chat_id, f)
-        f = open('/home/pi/PiHome/humidity.png', 'rb')  # some file on local disk
+        f = open('/home/pi/flowers/humidity.png', 'rb')  # some file on local disk
         response = bot.sendPhoto(chat_id, f)
         #print("Image sent...")
         
@@ -61,14 +61,14 @@ def handle(msg):
         
         bot.sendMessage(chat_id, 'Generating plot of the last {} hours.'.format(bhours))
         bot.sendMessage(chat_id, 'hmin = {} hmax = {} tmin = {} tmax = {}'.format(hmin,hmax,tmin,tmax))
-        subprocess.run(["python3","/home/pi/PiHome/make_th_plot.py",str(bhours),str(hmin),str(hmax),str(tmin),str(tmax)])
+        subprocess.run(["python3","/home/pi/flowers/make_th_plot.py",str(bhours),str(hmin),str(hmax),str(tmin),str(tmax)])
         #get_plot(bhours)
         
         print("Plot generated...")
         #bot.sendMessage(chat_id, 'Temp={0:0.1f}*'.format(temperature))
-        f = open('/home/pi/PiHome/temperature.png', 'rb')  # some file on local disk
+        f = open('/home/pi/flowers/temperature.png', 'rb')  # some file on local disk
         response = bot.sendPhoto(chat_id, f)
-        f = open('/home/pi/PiHome/humidity.png', 'rb')  # some file on local disk
+        f = open('/home/pi/flowers/humidity.png', 'rb')  # some file on local disk
         response = bot.sendPhoto(chat_id, f)
         #print("Image sent...")
     
@@ -80,12 +80,12 @@ def handle(msg):
     
     elif command == '/pic':
         bot.sendMessage(chat_id, 'Sending picture...')
-        subprocess.run(["sh","/home/pi/PiHome/webcam.sh"])
-        f = open('/home/pi/PiHome/webcam/pic.jpg', 'rb')
+        subprocess.run(["sh","/home/pi/flowers/webcam.sh"])
+        f = open('/home/pi/flowers/webcam/pic.jpg', 'rb')
         response = bot.sendPhoto(chat_id, f)
 
     elif command == '/vid':        
-        f = open('/home/pi/PiHome/webcam/timelapse_jpg/test.mp4', 'rb')
+        f = open('/home/pi/flowers/webcam/timelapse_jpg/test.mp4', 'rb')
         bot.sendVideo(chat_id, f)
         
     else:
@@ -93,7 +93,7 @@ def handle(msg):
 
         
         
-TOKEN = open('/home/pi/PiHome/bot_token.config')
+TOKEN = open('/home/pi/flowers/bot_token.config')
 bot = telepot.Bot(TOKEN.read())
 TOKEN.close()  
 
