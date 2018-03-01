@@ -51,13 +51,13 @@ while True:
         #print('Humidity at {0:0.1f}: Pin 1 off.'.format(humidity))
         
     if not get_status(2) and not flag and (humidity > 70 or temperature > 27):
-        relay.relay_on_off(2,1)
+        relay_on_off(2,1)
         flag = 1
         #print('Humidity at {0:0.1f}% and Temperature at {1:0.1f}*: Pin 2 on.'.format(humidity, temperature))
-    elif flag and humidity < 65 and temperature <= 26:
+    elif flag and humidity < 65 and temperature <= 25:
         relay_on_off(2,0)
         flag = 0
     
-    print('Humidity at {0:0.1f}% and Temperature at {1:0.1f}*:\n Pin 1 is {2:}, Pin 2 is {3:}.'.format(humidity, temperature, get_status(1), get_status(2)))
+    #print('Humidity at {0:0.1f}% and Temperature at {1:0.1f}*:\n Pin 1 is {2:}, Pin 2 is {3:}.'.format(humidity, temperature, get_status(1), get_status(2)))
         
     time.sleep(5)

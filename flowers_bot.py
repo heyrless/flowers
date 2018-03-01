@@ -84,8 +84,13 @@ def handle(msg):
         f = open('/home/pi/flowers/webcam/pic.jpg', 'rb')
         response = bot.sendPhoto(chat_id, f)
 
-    elif command == '/vid':        
-        f = open('/home/pi/flowers/webcam/timelapse_jpg/test.mp4', 'rb')
+    elif command[:4] == '/vid':
+        days_ago = command[4]
+        frame_rate = command[5:]
+        bot.sendMessage(chat_id, 'Generating timelapse of {} days ago at {} FPS'.format(days_ago,frame_rate))
+        subprocess.call(["/bin/bash","/home/pi/flowers/webcam_build_mp4.sh",str(days_ago),str(frame_rate)])
+        
+        f = open('/home/pi/flowers/webcam/movie/timelapse.mp4', 'rb')
         bot.sendVideo(chat_id, f)
         
     else:
@@ -103,7 +108,7 @@ print('I am listening ...')
 #print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
 
 while True:
-    time.sleep(10)
+    time.sleep(1)
     #sys.stdout.flush()
     
     

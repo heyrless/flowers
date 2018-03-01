@@ -1,11 +1,15 @@
-import relay
-import time
+from apscheduler.schedulers.blocking import BlockingScheduler
+import relay as rl
+import time as t
+#from datetime import datetime, time
 
-#relay_on_off(pin_in=1,status=0):
-#get_status(pin_in=1):
+#now = datetime.now()
+#now_time = now.time()
 
-while True:
-    relay_on_off(2,1)  
-    time.sleep(300)
-    relay_on_off(2,0)
-    time.sleep(3300)
+sched = BlockingScheduler()
+
+@sched.scheduled_job('interval', seconds=1800)
+def timed_job():
+    rl.relay_on_off(2,1)  
+    t.sleep(300)
+    rl.relay_on_off(2,0)
