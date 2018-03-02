@@ -89,7 +89,7 @@ def handle(msg):
         frame_rate = command[5:]
         bot.sendMessage(chat_id, 'Generating timelapse of {} days ago at {} FPS'.format(days_ago,frame_rate))
         subprocess.call(["/bin/bash","/home/pi/flowers/webcam_build_mp4.sh",str(days_ago),str(frame_rate)])
-        
+        time.sleep(5)
         f = open('/home/pi/flowers/webcam/movie/timelapse.mp4', 'rb')
         bot.sendVideo(chat_id, f)
         

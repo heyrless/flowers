@@ -2,7 +2,7 @@
 
 DATE=$(date +"%Y-%m-%d_%H%M")
 #DATE=$(date +"%image_%H%M")
-fswebcam -S 60 /home/pi/flowers/webcam/timelapse/$DATE.jpg
+fswebcam -S 60 --swapchannels  GB /home/pi/flowers/webcam/timelapse/$DATE.jpg
 
 #fswebcam -S 60 --no-banner /home/pi/PiHome/webcam/timelapse/$DATE.jpg
 
